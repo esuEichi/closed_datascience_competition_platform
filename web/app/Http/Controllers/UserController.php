@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Result;
 use App\Competition;
-
+use DB;
 
 class UserController extends Controller
 {
@@ -18,13 +18,15 @@ class UserController extends Controller
     public function detail(string $user_name)
     {
         $user = User::where('name', $user_name)->get()->toArray();
-        $results = Result::select('title', 'score', 'created_at')
+        $results = Result::select('title', 'score')
+            ->select('title', 'score','results.created_at as created_at')
             ->where('user_id', $user[0]['id'])
             ->join('competitions', 'competitions.id', '=' , 'results.competition_id')
-            //->pluck('title', 'score')
-            ->orderBy('title','asc')
-            ->orderBy('score', 'desc')
-            ->get();
+            ->orderBy('title')
+            ->orderBy('score','desc')
+            ->get()
+            ;
+
         return view('users.detail')->with(['user' => $user, 'results'=>$results]);
     }
 }

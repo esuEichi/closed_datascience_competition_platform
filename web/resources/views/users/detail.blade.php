@@ -16,7 +16,7 @@
                         <h4>{{$result->title}}</h4>
                         <?php $title = $result->title?>
                         @endif
-                        <p>{{$result->score}}</p>
+                        <p>{{$result->score}}   :  <span style="color:gray;">{{$result->created_at}}</span></p>
                     @endforeach
                 </div>
             </div>
