@@ -13,7 +13,6 @@ class EvaluationController extends Controller
 {
     //
     public function index(Request $request){
-        //TODO ファイルを受け取ってスコア計算して結果を受け取る
         $result = new Result;
 
         $file = $this->getUploadedFileFromRequest($request);
@@ -25,7 +24,6 @@ class EvaluationController extends Controller
         $result['competition_id'] = $request["competition_id"];
         $result->save();
 
-        //return redirect()->to(url()->current());
         $this->redirectToResult($request->competition_id, $result);
     }
 
@@ -40,15 +38,12 @@ class EvaluationController extends Controller
 
         return $file;
     }
-    //file を受け取って形式があっているかをチェックする関数
+
     private function validFile($file){
-        //git 連携していないvalidation用の関数を作る
         return true;
     }
 
     private function evaluate($file){
-        //スコア計算のメソッドを作る
-        //当てで乱数を生成する
         $answer = new \SplFileObject(database_path('answer.csv'));
         $answer = $this->file2array($answer);
         $result = $this->file2array($file);
@@ -78,10 +73,7 @@ class EvaluationController extends Controller
     private function redirectToResult($competition_id, $result){
         $title = Competition::where('id', $competition_id)->pluck('title')->first();
         $url = '/competitions/'.$title.'/results';
-        //var_dump($result);
         echo '<p>score is '.$result->score.'</p>';
         echo '<a href="'.$url.'">'.'other results'.'</a>';
-
-        //redirect()->to($url)->withInput()->withInput();
     }
 }
