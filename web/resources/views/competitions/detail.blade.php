@@ -20,12 +20,19 @@
                 </div>
                 <div class="card-header">submit result</div>
                 <div class="card-body">
+                    @if(Auth::check())
                     <h4>ここにテストのやつを作る</h4>
-                    {{Form::open(['url' => '/api/competition/evaluation'])}}
+                    {{Form::open(['url' => '/api/competition/evaluation', 'files' => true])}}
                     <input type="hidden" name="competition_id" value="{{$competition->id}}"/>
-                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}"/>
+                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}"/></br>
+                    {{Form::label('file', 'upload result file', ['class' => 'control-label']) }}</br>
+                    {{Form::file('upload_file') }}</br>
                     {{Form::submit('submit')}}
                     {{Form::close()}}
+                    @else
+                    <h4>ログインすると結果の投稿ができます</h4>
+                    
+                    @endif
                 </div>
             </div>
         </div>
