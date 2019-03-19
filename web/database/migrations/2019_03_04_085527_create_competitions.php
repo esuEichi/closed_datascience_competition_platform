@@ -17,10 +17,10 @@ class CreateCompetitions extends Migration
             $table->bigIncrements('id');
             $table->integer('registered_user_id');
             $table->string('title')->unique();
-            $table->string('about')->nullale();
-            $table->string('evaluate')->nullale();
-            $table->string('data_url')->nullale();
-            $table->string('other')->nullale();
+            $table->text('about')->nullable();
+            $table->text('evaluate')->nullable();
+            $table->text('data_url')->nullable();
+            $table->text('other')->nullable();
             $table->timestamps();
         });
     }
