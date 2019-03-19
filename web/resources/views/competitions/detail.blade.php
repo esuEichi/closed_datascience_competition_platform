@@ -10,18 +10,18 @@
                 <div class="card-header">{{$competition->title}}</div>
                 <div class="card-body">
                     <h4>about this competition</h4>
-                    <p>{{$competition->about}}
+                    <p>{!!preg_replace('/\r\n|\r|\n/', '</br>', $competition->about)!!}</p>
                     <h4>how to evaluate</h4>
-                    <p>{{$competition->evaluate}}
+                    <p>{{$competition->evaluate}}</p>
                     <h4>url to get data</h4>
-                    <p>{{$competition->data_url}}
+                    <p>{{$competition->data_url}}</p>
                     <h4>other notices</h4>
-                    <p>{{$competition->other}}
+                    <p>{{$competition->other}}</p>
                 </div>
                 <div class="card-header">submit result</div>
                 <div class="card-body">
                     @if(Auth::check())
-                    <h4>ここにテストのやつを作る</h4>
+                    <h4>submit your result</h4>
                     {{Form::open(['url' => '/api/competition/evaluation', 'files' => true])}}
                     <input type="hidden" name="competition_id" value="{{$competition->id}}"/>
                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}"/></br>
@@ -30,9 +30,18 @@
                     {{Form::submit('submit')}}
                     {{Form::close()}}
                     @else
-                    <h4>ログインすると結果の投稿ができます</h4>
-                    
+                    <h4>you need login to evaluate your result</h4>
                     @endif
+                </div>
+                    <div class="card-header">other informations</div>
+                    <div class="card-body"></div>
+                    @if(Auth::check())
+                    <p><a href="{{url()->current()}}/results"> results of this competition </a></p>
+                    <p><a href="{{url()->current()}}/board"> discussion </a></p>
+                    @else
+                        <p>you need login</p>
+                    @endif
+
                 </div>
             </div>
         </div>
