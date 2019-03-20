@@ -15,6 +15,7 @@ class UserController extends Controller
         $users = User::all();
         return view('users.index')->with('user', $users);
     }
+
     public function detail(string $user_name)
     {
         $user = User::where('name', $user_name)->get()->toArray();
@@ -29,4 +30,13 @@ class UserController extends Controller
 
         return view('users.detail')->with(['user' => $user, 'results'=>$results]);
     }
+//    public function update(string $name, $id){
+    public function update(Request $request){
+
+        $user = User::find($request->id);
+        $user->name = $request->name;
+        $user->save();
+        echo '<p><a href="/users/'.$user->name.'">go your new page</a></p>';
+    }
+
 }

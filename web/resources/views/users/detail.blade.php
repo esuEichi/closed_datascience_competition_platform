@@ -8,7 +8,13 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{$user['name']}}</div>
-
+                @if($user['id'] === Auth::id())
+                {{Form::open(['url' => url()->current()])}}
+                <input type="text" name="name" value="{{$user['name']}}"/></br>
+                <input type="hidden" name="id" value="{{$user['id']}}"/>
+                {{Form::submit('update your information')}}
+                {{Form::close()}}
+                @endif
                 <div class="card-body">
                     <?php $title = ''?>
                     @foreach ($results as $result)
