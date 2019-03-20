@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{$title}} lanking</div>
+                <div class="card-header">{{$title}} ranking</div>
                 <div class="card-body">
                 </div>
                 <div class="card-body">
