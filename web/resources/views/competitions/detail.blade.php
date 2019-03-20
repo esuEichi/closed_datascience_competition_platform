@@ -12,11 +12,11 @@
                     <h4>about this competition</h4>
                     <p>{!!preg_replace('/\r\n|\r|\n/', '</br>', $competition->about)!!}</p>
                     <h4>how to evaluate</h4>
-                    <p>{{$competition->evaluate}}</p>
+                    <p>{!!preg_replace('/\r\n|\r|\n/', '</br>', $competition->evaluate)!!}</p>
                     <h4>url to get data</h4>
-                    <p>{{$competition->data_url}}</p>
+                    <p>{!!preg_replace('/\r\n|\r|\n/', '</br>', $competition->data_url)!!}</p>
                     <h4>other notices</h4>
-                    <p>{{$competition->other}}</p>
+                    <p>{!!preg_replace('/\r\n|\r|\n/', '</br>', $competition->other)!!}</p>
                 </div>
                 <div class="card-header">submit result</div>
                 <div class="card-body">
