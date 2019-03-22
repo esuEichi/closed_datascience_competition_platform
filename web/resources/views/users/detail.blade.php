@@ -10,7 +10,7 @@
                 <div class="card-header">{{$user['name']}}</div>
                 @if($user['id'] === Auth::id())
                 {{Form::open(['url' => url()->current()])}}
-                <input type="text" name="name" value="{{$user['name']}}"/></br>
+                <p>change your name to <input type="text" name="name" value="{{$user['name']}}"/></p>
                 <input type="hidden" name="id" value="{{$user['id']}}"/>
                 {{Form::submit('update your information')}}
                 {{Form::close()}}
