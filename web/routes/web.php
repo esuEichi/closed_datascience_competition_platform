@@ -25,14 +25,14 @@ Route::get('/users/{user_name}', 'UserController@detail')->where('user_name', '(
 Route::get('/competitions', 'CompetitionController@index')->name('competitions');
 Route::view('/competitions/register', 'competitions.register')->name('competition_register')->middleware('auth');
 Route::get('/competitions/{title}', 'CompetitionController@detail');
-Route::get('/competitions/{title}/results', 'CompetitionController@results');
+Route::get('/competitions/{title}/results', 'CompetitionController@results')->middleware('auth');;
 Route::post('/competitions/{title}/results', 'EvaluationController@index');
 
 
-Route::get('/competitions/{title}/board', 'BoardController@index');
-Route::post('/competitions/{title}/board', 'BoardController@register');
+Route::get('/competitions/{title}/board', 'BoardController@index')->middleware('auth');;
+Route::post('/competitions/{title}/board', 'BoardController@register')->middleware('auth');;
 
-Route::get('/competitions/{title}/board/{board_title}', 'BoardController@detail');
-Route::post('/competitions/{title}/board/{board_title}', 'BoardController@createNewComment');
+Route::get('/competitions/{title}/board/{board_title}', 'BoardController@detail')->middleware('auth');;
+Route::post('/competitions/{title}/board/{board_title}', 'BoardController@createNewComment')->middleware('auth');;
 
 
