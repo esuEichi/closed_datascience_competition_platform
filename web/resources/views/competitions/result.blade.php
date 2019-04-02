@@ -12,7 +12,7 @@
                 </div>
                 <div class="card-body">
                     @foreach ($results as $result)
-                    <p>{{$result->name}}: {{$result->score}} : {{$result->createdAt}}</p>
+                    <p><a href='/users/{{$result->name}}'>{{$result->name}}</a>: {{$result->score}} : {{$result->createdAt}}</p>
                     @endforeach
                 </div>
             </div>
