@@ -78,7 +78,7 @@ class EvaluationController extends Controller
         $result['opt_score4'] = $this->calcFMeasureWithArrays($answer_index_3, $result_index_3);
         $result['opt_score5'] = $this->calcFMeasureWithArrays($answer_index_4, $result_index_4);
 
-        $result['score'] = ($result['opt_score1'] + $result['opt_score2'] ) / 2;
+        $result['score'] = ($result['opt_score1'] + $result['opt_score2'] + $result['opt_score3'] + $result['opt_score4'] + $result['opt_score5']) / 5;
 
         return $result; 
         //return ($score/$i) * 100;
