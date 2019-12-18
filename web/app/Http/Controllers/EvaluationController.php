@@ -126,6 +126,9 @@ class EvaluationController extends Controller
             }
             $i++;
         }
+        if($results == 0){
+            return 0;
+        }
         return ($score/$results);
 
     }
@@ -146,7 +149,12 @@ class EvaluationController extends Controller
             }
             $i++;
         }
+
+        if($results == 0){
+            return 0;
+        }
         return ($score/$results);
+
     }
 
     private function file2array($file){
