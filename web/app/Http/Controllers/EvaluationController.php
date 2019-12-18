@@ -61,22 +61,22 @@ class EvaluationController extends Controller
         $answer = $this->csv2array($answer);
         $answer_index_0 = $this->getDataByCsvWithIndex($answer,0);
         $answer_index_1 = $this->getDataByCsvWithIndex($answer,1);
-//        $answer_index_2 = $this->getDataByCsvWithIndex($answer,2);
-//        $answer_index_3 = $this->getDataByCsvWithIndex($answer,3);
-//        $answer_index_4 = $this->getDataByCsvWithIndex($answer,4);
+        $answer_index_2 = $this->getDataByCsvWithIndex($answer,2);
+        $answer_index_3 = $this->getDataByCsvWithIndex($answer,3);
+        $answer_index_4 = $this->getDataByCsvWithIndex($answer,4);
 
         $result_array = $this->file2array($file);
         $result_index_0 = $this->getDataByCsvWithIndex($result_array, 0);    
         $result_index_1 = $this->getDataByCsvWithIndex($result_array, 1);    
-//        $result_index_2 = $this->getDataByCsvWithIndex($result_array, 2);    
-//        $result_index_3 = $this->getDataByCsvWithIndex($result_array, 3);    
-//        $result_index_4 = $this->getDataByCsvWithIndex($result_array, 4);    
+        $result_index_2 = $this->getDataByCsvWithIndex($result_array, 2);    
+        $result_index_3 = $this->getDataByCsvWithIndex($result_array, 3);    
+        $result_index_4 = $this->getDataByCsvWithIndex($result_array, 4);    
 
         $result['opt_score1'] = $this->calcFMeasureWithArrays($answer_index_0, $result_index_0);
         $result['opt_score2'] = $this->calcFMeasureWithArrays($answer_index_1, $result_index_1);
-//        $result['opt_score3'] = $this->calcFMeasureWithArrays($answer_index_2, $result_index_2);
-//        $result['opt_score4'] = $this->calcFMeasureWithArrays($answer_index_3, $result_index_3);
-//        $result['opt_score5'] = $this->calcFMeasureWithArrays($answer_index_4, $result_index_4);
+        $result['opt_score3'] = $this->calcFMeasureWithArrays($answer_index_2, $result_index_2);
+        $result['opt_score4'] = $this->calcFMeasureWithArrays($answer_index_3, $result_index_3);
+        $result['opt_score5'] = $this->calcFMeasureWithArrays($answer_index_4, $result_index_4);
 
         $result['score'] = ($result['opt_score1'] + $result['opt_score2'] + $result['opt_score3'] + $result['opt_score4'] + $result['opt_score5']) / 5;
 
