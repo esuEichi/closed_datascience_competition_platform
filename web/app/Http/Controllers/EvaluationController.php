@@ -161,7 +161,9 @@ class EvaluationController extends Controller
     private function file2array($file){
         $arr = Array();
         foreach($file as $line){
-            array_push($arr, $line);
+            if($line != ''){
+                array_push($arr, $line);
+            }
         }
         return $arr;
 
